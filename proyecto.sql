@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2018 a las 21:55:01
+-- Tiempo de generación: 12-11-2018 a las 22:54:16
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -86,6 +86,28 @@ CREATE TABLE `sistema_vehiculo` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_transporte`
+--
+
+CREATE TABLE `tipo_transporte` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `pais_procedencia` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_transporte`
+--
+
+INSERT INTO `tipo_transporte` (`id`, `nombre`, `pais_procedencia`) VALUES
+(1, 'Taxi', 'Argentina'),
+(2, 'Remis', 'Argentina'),
+(3, 'Uber', 'USA'),
+(4, 'Cabify', 'USA');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -105,7 +127,6 @@ CREATE TABLE `users` (
 CREATE TABLE `vehiculo` (
   `vehiculo_id` int(4) NOT NULL,
   `patente` varchar(10) NOT NULL DEFAULT '',
-  `anho_patente` smallint(2) NOT NULL DEFAULT '0',
   `anho_fabricacion` smallint(2) NOT NULL DEFAULT '0',
   `marca` varchar(100) DEFAULT NULL,
   `modelo` varchar(100) DEFAULT NULL,
@@ -145,6 +166,12 @@ ALTER TABLE `sistema_vehiculo`
   ADD PRIMARY KEY (`sistemavehiculo_id`),
   ADD UNIQUE KEY `vehiculo_id` (`vehiculo_id`,`sistema_id`),
   ADD KEY `sistema_id` (`sistema_id`);
+
+--
+-- Indices de la tabla `tipo_transporte`
+--
+ALTER TABLE `tipo_transporte`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -190,7 +217,7 @@ ALTER TABLE `sistema_vehiculo`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
