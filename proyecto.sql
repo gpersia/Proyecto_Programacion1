@@ -1,58 +1,50 @@
-CREATE DATABASE  IF NOT EXISTS `proyecto` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `proyecto`;
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: proyecto
--- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.16.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-11-2018 a las 21:55:01
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `auditoria`
+-- Base de datos: `proyecto`
 --
 
-DROP TABLE IF EXISTS `auditoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auditoria`
+--
+
 CREATE TABLE `auditoria` (
-  `auditoria_id` int(4) NOT NULL AUTO_INCREMENT,
+  `auditoria_id` int(4) NOT NULL,
   `fecha_acceso` date DEFAULT NULL,
   `user` varchar(30) NOT NULL DEFAULT '',
   `response_time` int(4) NOT NULL DEFAULT '0' COMMENT 'tiempo en milisegundos',
   `endpoint` varchar(150) NOT NULL DEFAULT '',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`auditoria_id`)
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `auditoria`
+-- Estructura de tabla para la tabla `chofer`
 --
 
-LOCK TABLES `auditoria` WRITE;
-/*!40000 ALTER TABLE `auditoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auditoria` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `chofer`
---
-
-DROP TABLE IF EXISTS `chofer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `chofer` (
-  `chofer_id` int(4) NOT NULL AUTO_INCREMENT,
+  `chofer_id` int(4) NOT NULL,
   `apellido` varchar(100) NOT NULL DEFAULT '',
   `nombre` varchar(100) NOT NULL DEFAULT '',
   `documento` decimal(11,0) NOT NULL DEFAULT '0',
@@ -60,117 +52,171 @@ CREATE TABLE `chofer` (
   `vehiculo_id` int(4) DEFAULT NULL,
   `sistema_id` int(4) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`chofer_id`),
-  KEY `documento` (`documento`),
-  KEY `vehiculo_id` (`vehiculo_id`),
-  KEY `sistema_id` (`sistema_id`),
-  CONSTRAINT `chofer_ibfk_1` FOREIGN KEY (`vehiculo_id`) REFERENCES `vehiculo` (`vehiculo_id`),
-  CONSTRAINT `chofer_ibfk_2` FOREIGN KEY (`sistema_id`) REFERENCES `sistema_transporte` (`sistema_id`)
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `chofer`
+-- Estructura de tabla para la tabla `sistema_transporte`
 --
 
-LOCK TABLES `chofer` WRITE;
-/*!40000 ALTER TABLE `chofer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chofer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sistema_transporte`
---
-
-DROP TABLE IF EXISTS `sistema_transporte`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sistema_transporte` (
-  `sistema_id` int(4) NOT NULL AUTO_INCREMENT,
+  `sistema_id` int(4) NOT NULL,
   `nombre` varchar(50) NOT NULL DEFAULT '',
   `pais_procedencia` varchar(100) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`sistema_id`)
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `sistema_transporte`
+-- Estructura de tabla para la tabla `sistema_vehiculo`
 --
 
-LOCK TABLES `sistema_transporte` WRITE;
-/*!40000 ALTER TABLE `sistema_transporte` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sistema_transporte` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sistema_vehiculo`
---
-
-DROP TABLE IF EXISTS `sistema_vehiculo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sistema_vehiculo` (
-  `sistemavehiculo_id` int(4) NOT NULL AUTO_INCREMENT,
+  `sistemavehiculo_id` int(4) NOT NULL,
   `vehiculo_id` int(4) DEFAULT NULL,
   `sistema_id` int(4) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`sistemavehiculo_id`),
-  UNIQUE KEY `vehiculo_id` (`vehiculo_id`,`sistema_id`),
-  KEY `sistema_id` (`sistema_id`),
-  CONSTRAINT `sistema_vehiculo_ibfk_1` FOREIGN KEY (`vehiculo_id`) REFERENCES `vehiculo` (`vehiculo_id`),
-  CONSTRAINT `sistema_vehiculo_ibfk_2` FOREIGN KEY (`sistema_id`) REFERENCES `sistema_transporte` (`sistema_id`)
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `sistema_vehiculo`
+-- Estructura de tabla para la tabla `users`
 --
 
-LOCK TABLES `sistema_vehiculo` WRITE;
-/*!40000 ALTER TABLE `sistema_vehiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sistema_vehiculo` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `vehiculo`
+-- Estructura de tabla para la tabla `vehiculo`
 --
 
-DROP TABLE IF EXISTS `vehiculo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehiculo` (
-  `vehiculo_id` int(4) NOT NULL AUTO_INCREMENT,
+  `vehiculo_id` int(4) NOT NULL,
   `patente` varchar(10) NOT NULL DEFAULT '',
   `anho_patente` smallint(2) NOT NULL DEFAULT '0',
   `anho_fabricacion` smallint(2) NOT NULL DEFAULT '0',
   `marca` varchar(100) DEFAULT NULL,
   `modelo` varchar(100) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`vehiculo_id`)
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vehiculo`
+-- Índices para tablas volcadas
 --
 
-LOCK TABLES `vehiculo` WRITE;
-/*!40000 ALTER TABLE `vehiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vehiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- Indices de la tabla `auditoria`
+--
+ALTER TABLE `auditoria`
+  ADD PRIMARY KEY (`auditoria_id`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indices de la tabla `chofer`
+--
+ALTER TABLE `chofer`
+  ADD PRIMARY KEY (`chofer_id`),
+  ADD KEY `documento` (`documento`),
+  ADD KEY `vehiculo_id` (`vehiculo_id`),
+  ADD KEY `sistema_id` (`sistema_id`);
+
+--
+-- Indices de la tabla `sistema_transporte`
+--
+ALTER TABLE `sistema_transporte`
+  ADD PRIMARY KEY (`sistema_id`);
+
+--
+-- Indices de la tabla `sistema_vehiculo`
+--
+ALTER TABLE `sistema_vehiculo`
+  ADD PRIMARY KEY (`sistemavehiculo_id`),
+  ADD UNIQUE KEY `vehiculo_id` (`vehiculo_id`,`sistema_id`),
+  ADD KEY `sistema_id` (`sistema_id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  ADD PRIMARY KEY (`vehiculo_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `auditoria`
+--
+ALTER TABLE `auditoria`
+  MODIFY `auditoria_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `chofer`
+--
+ALTER TABLE `chofer`
+  MODIFY `chofer_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sistema_transporte`
+--
+ALTER TABLE `sistema_transporte`
+  MODIFY `sistema_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sistema_vehiculo`
+--
+ALTER TABLE `sistema_vehiculo`
+  MODIFY `sistemavehiculo_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  MODIFY `vehiculo_id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `chofer`
+--
+ALTER TABLE `chofer`
+  ADD CONSTRAINT `chofer_ibfk_1` FOREIGN KEY (`vehiculo_id`) REFERENCES `vehiculo` (`vehiculo_id`),
+  ADD CONSTRAINT `chofer_ibfk_2` FOREIGN KEY (`sistema_id`) REFERENCES `sistema_transporte` (`sistema_id`);
+
+--
+-- Filtros para la tabla `sistema_vehiculo`
+--
+ALTER TABLE `sistema_vehiculo`
+  ADD CONSTRAINT `sistema_vehiculo_ibfk_1` FOREIGN KEY (`vehiculo_id`) REFERENCES `vehiculo` (`vehiculo_id`),
+  ADD CONSTRAINT `sistema_vehiculo_ibfk_2` FOREIGN KEY (`sistema_id`) REFERENCES `sistema_transporte` (`sistema_id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-11-12 16:50:17
