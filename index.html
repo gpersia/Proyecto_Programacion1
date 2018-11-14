@@ -2,7 +2,7 @@
   <head>
     <title>Administracion Log-In</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="Estilo.css" rel="stylesheet" type="text/css">
   </head>
 <body id="LoginForm">
 <div class="container">
@@ -12,13 +12,14 @@
    <h2>Log In</h2>
    <p>Ingrese sus datos:</p>
    </div>
-    <form id="Login"><link href="bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <form id="Login" action="ingresar.php" method="POST">
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="Estilo.css" rel="stylesheet" type="text/css">
         <div class="form-group">
-            <input type="user" class="form-control" id="inputUser" placeholder="Usuario">
+            <input type="user" class="form-control" name="usuario" placeholder="Usuario">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Contrase&ntilde;a">
+            <input type="password" class="form-control" name="password" placeholder="Contrase&ntilde;a">
         </div>
         <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>
