@@ -3,6 +3,7 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
 .form-heading { color:#fff; font-size:23px;}
 .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
 .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+
 .login-form .form-control {
   background: #f7f7f7 none repeat scroll 0 0;
   border: 1px solid #d4d4d4;
@@ -51,3 +52,29 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
 }
 .back { text-align: left; margin-top:10px;}
 .back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+.left{ float:left; background:red;}
+
+.login-form .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.login-form .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+.login-form .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
