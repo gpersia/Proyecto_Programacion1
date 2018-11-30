@@ -17,7 +17,7 @@
   }
 
   function create(){
-    $query="INSERT INTO " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, documento=:documento, email=:email, vehiculo_id=:vehiculo_id, sistema_id=:sistema_id, created=:created";
+    $query="INSERT INTO " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, documento=:documento, email=:email, vehiculo_id=:vehiculo_id, sistema_id=:sistema_id, created=:created, tipo_transporte_id=:tipo_transporte_id";
     $stmt = $this->conn->prepare($query);
       $this->apellido=strip_tags($this->apellido);
       $this->nombre=strip_tags($this->nombre);
@@ -27,8 +27,7 @@
       $this->sistema_id=strip_tags($this->sistema_id);
       $this->created=strip_tags($this->created);
       
-    $variable=$this->apellido;
-    $stmt->bindParam(":apellido", $variable);
+    $stmt->bindParam(":apellido", $this->apellido);
     $stmt->bindParam(":nombre", $this->nombre);
     $stmt->bindParam(":documento", $this->documento);
     $stmt->bindParam(":email", $this->email);
