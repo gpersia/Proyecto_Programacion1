@@ -8,7 +8,7 @@ include_once '../config/chofer.php';
 include_once '../objects/chofer.php';
 $database = new Database();
 $db = $database->getConnection();
-$driver = new Chofer($db);
+$driver = new driver($db);
 $data = json_decode(file_get_contents("php://input"));
 if(isset($data->apellido) && isset($data->nombre) && isset($data->documento) && isset($data->email) && isset($data->tipo_transporte_id) && isset($data->sistema_id)){
     $driver->surname = $data->apellidp;

@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '/home/gianluca/Documentos/Facultad/Programacion I/Proyecto/Proyecto_Programacion1/api/config/database.php';
 $database = new Database();
 $db = $database->getConnection();
-$driver = new Chofer($db);
+$driver = new driver($db);
 $data = json_decode(file_get_contents("php://input"));
 $driver->driver_id = $data->chofer_id;
 if($data->driver_id != null){
