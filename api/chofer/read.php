@@ -10,14 +10,14 @@
     $db=$database->getConnection();
 
     $driver = new driver($db);
-    $ = $driver->read();        //<--------------
-    $numero = $->rowCount();   //<--------------
+    $stmt = $driver->read();        
+    $numero = $stmt->rowCount();   
 
     if($num>0){
         $driver_arr=array();
         $driver_arr["archivos"]=array();
 
-        while ($fila = $->fetch(PDO::FETCH_ASSOC)){ //<----------------
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){ 
             extract($fila);
             $driver_item=array(
                 "chofer_id"=>$chofer_id,
