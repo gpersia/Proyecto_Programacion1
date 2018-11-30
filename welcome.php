@@ -55,15 +55,15 @@
                   </div>
                   <br>
                   <br>
-                  <button type="submit" class="button button1">Administración de Usuarios</button>
+                  <button type="submit" class="button button1">Usuarios</button>
                   <br>
                 </form>
                 <form class="aud_register" action="Registro_auditoria.php" method="POST">
-                  <button type="submit" class="button button1">  Registros de Auditoría  </button>
+                  <button type="submit" class="button button1">Auditoría</button>
                   <br>
                 </form>
                   <form class="aud_export" action="Exportacion_auditoria.php" method="POST">
-                    <button type="submit" class="button button1"> Exportación de Auditoría </button>
+                    <button type="submit" class="button button1">Exportar Auditoria</button>
                   </form>
               </div>
 
