@@ -9,7 +9,7 @@
     $database=new Database();
     $db=$database->getConnection();
 
-    $driver = new Chofer($db);
+    $driver = new driver($db);
     $ = $driver->read();        //<--------------
     $numero = $->rowCount();   //<--------------
 
@@ -20,6 +20,7 @@
         while ($fila = $->fetch(PDO::FETCH_ASSOC)){ //<----------------
             extract($fila);
             $driver_item=array(
+                "chofer_id"=>$chofer_id,
                 "apellido" => $apellido,
                 "nombre" => $nombre,
                 "documento" => $documento,
