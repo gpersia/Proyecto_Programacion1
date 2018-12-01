@@ -72,8 +72,8 @@ function delete(){
   }
 
 function search($key){
-  $query="SELECT s.id, s.nombre, s.pais_procedencia, s.created, s.updated FROM " . $this->table_transporte . " s WHERE s.id LIKE ... OR 
-    s.nombre LIKE ... OR s.pais_procedencia LIKE ... ORDER BY created DESC";
+  $query="SELECT * FROM " . $this->table_transporte . " s WHERE s.id LIKE ? OR 
+    s.nombre LIKE ? OR s.pais_procedencia LIKE ? ORDER BY created DESC";
   $stmt=$this->conn->prepare($query);
   $key=strip_tags($key);
   $key = "%{$key}%";
@@ -84,4 +84,3 @@ function search($key){
   return $stmt;
 }
 }
-/*NO SE QUE PONER EN DONDE ESTAN LOS ...*/

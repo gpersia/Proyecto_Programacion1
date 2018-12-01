@@ -2,37 +2,36 @@
   class Chofer{
     private $conn;
     private $table_name = "chofer";
-    public $chofer_id;
+    public $id;
     public $apellido;
     public $nombre;
-    public $documento;
+    public $dni;
     public $email;
-    public $vehiculo_id;
-    public $sistema_id;
+    public $FK_vehiculo;
+    public $FK_transporte;
     public $created;
     public $updated;
-    public $tipo_transporte_id;
     public function __construct($db){
         $this->conn = $db;
   }
 
   function create(){
-    $query="INSERT INTO " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, documento=:documento, email=:email, vehiculo_id=:vehiculo_id, sistema_id=:sistema_id, created=:created, tipo_transporte_id=:tipo_transporte_id";
+    $query="INSERT INTO " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, dni=:dni, email=:email, FK_vehiculo=:FK_vehiculo, FK_transporte:FK_transporte, created=:created";
     $stmt = $this->conn->prepare($query);
       $this->apellido=strip_tags($this->apellido);
       $this->nombre=strip_tags($this->nombre);
-      $this->documento=strip_tags($this->documento);
+      $this->dni=strip_tags($this->dni);
       $this->email=strip_tags($this->email);
-      $this->vehiculo_id=strip_tags($this->vehiculo_id);
-      $this->sistema_id=strip_tags($this->sistema_id);
+      $this->FK_vehiculo=strip_tags($this->FK_vehiculo);
+      $this->FK_transporte=strip_tags($this->FK_transporte);
       $this->created=strip_tags($this->created);
       
     $stmt->bindParam(":apellido", $this->apellido);
     $stmt->bindParam(":nombre", $this->nombre);
-    $stmt->bindParam(":documento", $this->documento);
+    $stmt->bindParam(":dni", $this->dni);
     $stmt->bindParam(":email", $this->email);
-    $stmt->bindParam(":vehiculo_id", $this->vehiculo_id);
-    $stmt->bindParam(":sistema_id", $this->sistema_id);
+    $stmt->bindParam(":FK_vehiculo", $this->FK_vehiculo);
+    $stmt->bindParam(":FK_transporte", $this->FK_transporte);
     $stmt->bindParam(":created", $this->created);
       
     if($stmt->execute()){
@@ -41,35 +40,33 @@
     return false;
   }
 
-  function read(){
-    $query = "SELECT v.modelo as modelo_vehiculo, c.apellido, c.nombre, c.documento,
-     c.email, c.vehiculo_id, c.sistema_id, c.created, c.updated
-      FROM " . $this->table_name . " c LEFT JOIN vehiculo v ON c.vehiculo_id = v.vehiculo_id
-       ORDER BY c.documento";
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute();
+  public function read(){
+        $query="SELECT * FROM " . $this->table_name . " ORDER BY dni";
+        $stmt=$this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
     return $stmt;
   }
 
-  function update(){
-    $query="UPDATE " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, documento=:documento, email=:email, vehiculo_id=:vehiculo_id, sistema_id=:sistema_id WHERE chofer_id=:chofer_id";
+  public function update(){
+    $query="UPDATE " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, dni=:dni, email=:email, FK_vehiculo=:FK_vehiculo, FK_transporte=:FK_transporte WHERE id=:id";
     $stmt=$this->conn->prepare($query);
 
     $this->chofer_id=strip_tags($this->chofer_id);
     $this->apellido=strip_tags($this->apellido);
     $this->nombre=strip_tags($this->nombre);
-    $this->documento=strip_tags($this->documento);
+    $this->dni=strip_tags($this->dni);
     $this->email=strip_tags($this->email);
-    $this->vehiculo_id=strip_tags($this->vehiculo_id);
-    $this->sistema_id=strip_tags($this->sistema_id);
+    $this->FK_vehiculo=strip_tags($this->FK_vehiculo);
+    $this->FK_transporte=strip_tags($this->FK_transporte);
 
     $stmt->bindParam(":apellido",$this->apellido);
     $stmt->bindParam(":nombre",$this->nombre);
-    $stmt->bindParam(":documento",$this->documento);
+    $stmt->bindParam(":dni",$this->dni);
     $stmt->bindParam(":email",$this->email);
-    $stmt->bindParam(":vehiculo_id",$this->vehiculo_id);
-    $stmt->bindParam(":sistema_id",$this->sistema_id);
-    $stmt->bindParam(":chofer_id",$this->chofer_id);
+    $stmt->bindParam(":FK_vehiculo",$this->FK_vehiculo);
+    $stmt->bindParam(":FK_transporte",$this->FK_transporte);
+    $stmt->bindParam(":id",$this->id);
   
     if($stmt->execute()){
       return true;
@@ -77,19 +74,19 @@
     return false;
   }
 
-  /*function delete(){
-    $query="DELETE FROM " . $this->table_name . " WHERE chofer_id = ...";
+  public function delete(){
+    $query="DELETE FROM " . $this->table_name . " WHERE id=:id";
     $stmt=$this->conn->prepare($query);
-    $this->chofer_id=strip_tags($this->chofer_id);
-    $stmt->bindParam(1,$this->chofer_id);
+    $this->id=strip_tags($this->id);
+    $stmt->bindParam(1,$this->id);
     if($stmt->execute()){
       return true;
     }
     return false;
   }
 
-  function search($key){
-    $query="SELECT * FROM " . $this->table_name . " WHERE chofer_id LIKE ... OR nombre LIKE ... OR apellido LIKE ... OR documento LIKE ... ORDER BY created DESC";
+  public function search($key){
+    $query="SELECT * FROM " . $this->table_name . " WHERE id LIKE ? OR nombre LIKE ? OR apellido LIKE ? OR dni LIKE ? ORDER BY created DESC";
     $stmt=$this->conn->prepare($query);
     $key=strip_tags($key);
     $key = "%{$key}%";
@@ -101,7 +98,4 @@
     return $stmt;
   }
 }
-
-
-NO SE QUE PONER ADONDE ESTAN LOS ... PARA QUE FUNCIONE*/
 ?>
