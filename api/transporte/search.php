@@ -30,7 +30,7 @@
       echo json_encode($transporte_arr);
       }
       else{
-        echo json_encode(array("message"=>"Error"));
+        echo json_encode(array("message"=>"Error, intente nuevamente"));
       }
     }
     else{

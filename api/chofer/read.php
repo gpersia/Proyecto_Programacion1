@@ -9,7 +9,7 @@
     $database=new Database();
     $db=$database->getConnection();
 
-    $driver = new driver($db);
+    $chofer = new chofer($db);
     $stmt = $driver->read();        
     $numero = $stmt->rowCount();   
 
@@ -19,21 +19,20 @@
 
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){ 
             extract($fila);
-            $driver_item=array(
-                "chofer_id"=>$chofer_id,
-                "apellido" => $apellido,
+            $chofer_item=array(
+                "chofer_id"=>$id,
                 "nombre" => $nombre,
-                "documento" => $documento,
+                "apellido" => $apellido,
+                "documento" => $dni,
                 "email" => $email,
-                "vehiculo_id" => $vehiculo_id,
-                "sistema_id" => $sistema_id,
+                "FK_vehiculo" => $FK_vehiculo,
+                "FK_transporte" => $FK_transporte,
                 "created" => $created,
                 "updated" => $updated,
-                "tipo_transporte_id" => $tipo_transporte_id
             );
-            array_push($driver_arr["archivos"], $driver_item);
+            array_push($chofer_arr["archivos"], $chofer_item);
         }
-        echo json_encode($driver_arr);
+        echo json_encode($chofer_arr);
     }
     else{
         echo json_encode(array("message" => "No se encontraron choferes")

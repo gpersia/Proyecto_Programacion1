@@ -7,7 +7,6 @@
     	include 'read.php';
     	exit;
 	}
-
 	if($_SERVER['REQUEST_METHOD']==='PUT'){
     	include 'update.php';
     	exit;

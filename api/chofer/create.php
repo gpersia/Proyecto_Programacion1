@@ -8,20 +8,20 @@ include_once '../config/database.php';
 include_once '../objects/chofer.php';
 $database = new Database();
 $db = $database->getConnection();
-$driver = new driver($db);
+$chofer = new chofer($db);
 $data = json_decode(file_get_contents("php://input"));
 if(isset($data->apellido) && isset($data->nombre) && isset($data->documento) && isset($data->email) && isset($data->tipo_transporte_id) && isset($data->sistema_id)){
-    $driver->surname = $data->apellido;
-    $driver->name = $data->nombre;
-    $driver->dni = $data->documento;
-    $driver->email = $data->email;
-    $driver->vehicle_id = $data->tipo_transporte_id;
-    $driver->system_id = $data->sistema_id;
-    $driver->created = date('Y-m-d H:i:s');
+    $chofer->nombre = $data->nombre;
+    $chofer->apellido = $data->apellido;
+    $chofer->email = $data->email;
+    $chofer->dni = $data->dni;
+    $chofer->FK_vehiculo = $data->FK_vehiculo;
+    $chofer->FK_transporte = $data->FK_transporte;
+    $chofer->created = date('Y-m-d H:i:s');
     if($driver->create()){
-        echo json_encode(Array("Message" => "Creacion Satisfactoria"));
+        echo json_encode(Array("Message" => "Se agrego el chofer"));
     }else{
-        echo json_encode(Array("Message" => "Error, intente de nuevo."));
+        echo json_encode(Array("Message" => "Error, intente nuevamente."));
     };
 }else{
     echo json_encode(Array("Message" => "Completar todos los campos"));

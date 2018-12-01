@@ -4,24 +4,25 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-include_once '/home/gianluca/Documentos/Facultad/Programacion I/Proyecto/Proyecto_Programacion1/api/config/database.php';
+include_once '../config/database.php';
+include_once '../objects/chofer.php';
 $database = new Database();
 $db = $database->getConnection();
-$driver = new driver($db);
+$chofer = new chofer($db);
 $data = json_decode(file_get_contents("php://input"));
 s
 if(isset($data->id)){
-    $driver->driver_id = $data->chofer_id;
-    $driver->surname = $data->apellido;
-    $driver->name = $data->nombre;
-    $driver->dni = $data->documento;
-    $driver->email = $data->email;
-    $driver->vehicle_id = $data->vehiculo_id;
-    $driver->system_id = $data->sistema_id;
+    $chofer->id = $data->id;
+    $chofer->nombre = $data->nombre;
+    $chofer->apellido = $data->apellido;
+    $chofer->email = $data->email;
+    $chofer->dni = $data->dni;
+    $chofer->FK_vehiculo = $data->FK_vehiculo;
+    $chofer->FK_transporte = $data->FK_transporte;
     if($driver->update()){
-        echo json_encode(array("message" => "Cambios satisfactorios."));
+        echo json_encode(array("message" => "Se actualizaron los datos."));
     }else{
-        echo json_encode(array("message" => "Error, intente de nuevo."));
+        echo json_encode(array("message" => "Error, intente nuevamente."));
     }
 }
 ?>

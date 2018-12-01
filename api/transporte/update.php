@@ -13,15 +13,15 @@
 	$db=$database->getConnection();
 	$transporte=new transporte($db);
 	$data=json_decode(file_get_contents("php://input"));
-	$transporte->sistema_id=$data->sistema_id;
+	$transporte->id=$data->id;
 	$transporte->nombre=$data->nombre;
 	$transporte->pais_procedencia=$data->pais_procedencia;
 
 	if($sistema_transporte->update()){
-    	echo json_encode(array("message"=>"Cambios realizados!"));
+    	echo json_encode(array("message"=>"Se actualizaron los datos."));
 	}
 	else{
-    	echo json_encode(array("message"=>"Error"));
+    	echo json_encode(array("message"=>"Error, intente nuevamente"));
 	}
 	}
 	else{
