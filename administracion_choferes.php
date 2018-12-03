@@ -54,9 +54,9 @@
                     <br>
                     <a href="editar_chofer.php"><button class="button button1">Editar</button>
                     <br>
-                    <a href="eliminar_chofer"><button class="button button1">Eliminar</button>
+                    <a href="eliminar_chofer.php"><button class="button button1">Eliminar</button>
                     <br>
-                    <a href="buscar_chofer"><button class="button button1">Buscar</button>
+                    <a href="buscar_chofer.php"><button class="button button1">Buscar</button>
                 </div>
                 <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
             </div>

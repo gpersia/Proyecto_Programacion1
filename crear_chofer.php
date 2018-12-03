@@ -61,11 +61,19 @@
             </div>
             <div class="form-group">
               <label for="email">Email: </label>
-              <input type="text" class="form-control" name="email" id="email">
+              <input type="email" class="form-control" name="email" id="email">
             </div>
             <div class="form-group">
               <label for="dni">Documento: </label>
               <input type="text" class="form-control" name="dni" id="dni">
+            </div>
+            <div class="form-group">
+              <label for="FK_vehiculo">Vehiculo: </label>
+              <input type="text" class="form-control" name="FK_vehiculo" id="FK_vehiculo">
+            </div>
+            <div class="form-group">
+              <label for="FK_transporte">Tipo transporte: </label>
+              <input type="text" class="form-control" name="FK_transporte" id="FK_transporte">
             </div>
               <br>
             <button type="submit" class="button button1">Enviar</button>

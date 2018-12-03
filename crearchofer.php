@@ -1,33 +1,27 @@
 <?php
-  session_start();
+$servername = "localhost";
+$database = "proyecto";
+$username = "root";
+$password = "root";
 
-  /*$cont = file_get_contents("../conexion.php"); 
-  echo $cont;*/
+$conn = mysqli_connect($servername, $username, $password, $database);
 
-  $name = $_POST['nombre'];
-  $lastname = $_POST['apellido'];
-  $email = $_POST['email'];
-  $documento = $_POST['dni'];
-
-
-  $dbhost = "localhost";   
-  $dbuser = "root";     
-  $dbpass = "root";       
-  $dbname = "proyecto";    
-
-
-  $conexion = new PDO("mysql: host=$dbhost; dbname=$dbname", $username, $password);
-
-  $sql = 'select * from chofer';
-  $ejec_sql = $conexion->prepare($sql);
-  $ejec_sql -> execute();
-
-  $registro = array('nombre' => $name, 'apellido' => $lastname, 'email' => $email, 'dni' => $documento);
-
-  $sql = "INSERT INTO chofer (name, lastname, email, dni) VALUES (:name, :lastname, :email, :documento)";
-  $ejec_sql = $conexion -> prepare($sql);
-  $ejec_sql -> execute($registro);
-
-  /*header('location: Administracion_usuarios.php');
-  die();*/
- ?>
+if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+}
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$email = $_POST['email'];
+$dni = $_POST['dni'];
+$vehiculo = $_POST['FK_vehiculo'];
+$transporte = $_POST['FK_transporte'];
+ 
+$sql = "INSERT INTO chofer (nombre, apellido, email, dni, FK_vehiculo, FK_transporte) VALUES ('$nombre', '$apellido', '$email', '$dni', $vehiculo, '$transporte')";
+if (mysqli_query($conn, $sql)) {
+      echo "Se agrego el chofer a la base de datos";
+      "<a href=welcome.php>Volver al panel de administracion</a>";
+} else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+mysqli_close($conn);
+?>
