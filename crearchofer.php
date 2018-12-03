@@ -18,8 +18,9 @@ $transporte = $_POST['FK_transporte'];
  
 $sql = "INSERT INTO chofer (nombre, apellido, email, dni, FK_vehiculo, FK_transporte) VALUES ('$nombre', '$apellido', '$email', '$dni', $vehiculo, '$transporte')";
 if (mysqli_query($conn, $sql)) {
+  <html
       echo "Se agrego el chofer a la base de datos";
-      "<a href=welcome.php>Volver al panel de administracion</a>";
+      echo "<a href=welcome.php>Volver al panel de administracion</a>";
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }

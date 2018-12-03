@@ -52,9 +52,7 @@
                     <br>
                     <a href="crear_chofer.php"><button class="button button1">Crear</button>
                     <br>
-                    <a href="editar_chofer.php"><button class="button button1">Editar</button>
-                    <br>
-                    <a href="eliminar_chofer.php"><button class="button button1">Eliminar</button>
+                    <a href="ver_chofer.php"><button class="button button1">Editar o Eliminar</button>
                     <br>
                     <a href="buscar_chofer.php"><button class="button button1">Buscar</button>
                 </div>
