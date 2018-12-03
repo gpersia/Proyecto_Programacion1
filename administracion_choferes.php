@@ -45,19 +45,21 @@
         <div class="container">
             <div class="login-form">
                 <div class="main-div">
-                    <div class="panel">
-                        <h2>Administracion</h2>
-                        <p>Seleccione una opcion:</p>
-                    </div>
+                  <div class="panel">
+                    <h2>Administración-Choferes</h2>
+                    <p>Seleccione una opción: </p>
+                  </div>
                     <br>
-                    <a href="administracion_choferes.php"><button class="button button1">Administracion de choferes</button>
+                    <a href="crear_chofer.php"><button class="button button1">Crear</button>
                     <br>
-                    <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button>
+                    <a href="editar_chofer.php"><button class="button button1">Editar</button>
                     <br>
-                    <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button>
+                    <a href="eliminar_chofer"><button class="button button1">Eliminar</button>
+                    <br>
+                    <a href="buscar_chofer"><button class="button button1">Buscar</button>
                 </div>
                 <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
             </div>
-        </div>
+          </div>
     </body>
 </html>
