@@ -43,11 +43,10 @@
   </body>
     <body id="LoginForm">
         <div class="container">
-            <div class="login-form">
                 <div class="main-div">
                   <div class="panel">
-                    <h2>Administración-Vehiculos</h2>
-                    <p>Seleccione una opción: </p>
+                    <h2 align="center">Administración-Vehiculos</h2>
+                    <p align="center">Seleccione una opción: </p>
                   </div>
                     <br>
                     <a href="crear_vehiculo.php"><button class="button button1">Crear</button></a>
@@ -55,10 +54,9 @@
                     <a href="ver_vehiculo.php"><button class="button button1">Ver lista / Modificar</button></a>
                     <br>
                     <a href="buscarvehiculo.php"><button class="button button1">Buscar</button></a>
+                    <a href="welcome.php" align="center"><button class="button button1">Volver</button></a>
                 </div>
-                <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
-            </div>
+                <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
           </div>
-    <a href="welcome.php"> <<--Volver atras</a>
     </body>
 </html>

@@ -13,7 +13,7 @@
       display: inline-block;
       font-size: 14px;
       margin: 4px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s; 
       transition-duration: 0.4s;
       cursor: pointer;
       width: 100%;
@@ -46,10 +46,8 @@
           <?php
             session_start();
           ?>
-        <div class="col-md-6">
-          <h2>Registrar Chofer</h2>
-          <h5>Completar los datos</h5>
-        </div>
+          <h2 align="center">Registrar Chofer</h2>
+          <h5 align="center">Completar los datos</h5>
           <form class="formulario" action="crearchofer.php" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre: </label>
@@ -77,13 +75,13 @@
             </div>
               <br>
             <button type="submit" class="button button1">Enviar</button>
+            <a href="administracion_choferes.php"><button class="button button1">Volver</button></a>
+
               <br><br>
           </form>
-          <br><br><br>
+          <br><br>
         </div>
         </div>
-      <div class="col-md-6">
-        <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
-      </div>
+        <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
   </body>
 </html>

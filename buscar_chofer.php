@@ -15,10 +15,10 @@
       display: inline-block;
       font-size: 14px;
       margin: 4px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s;
       transition-duration: 0.4s;
       cursor: pointer;
-      width: 100%;
+      width: 25%;
       height: 50px;
       line-height: 50px;
       padding: 0;
@@ -32,6 +32,7 @@
         background-color: #ffffff;
         color: #f0ad4e;
       }
+      .buttonHolder{ text-align: center; }
       </style>
     <meta charset="utf-8">
     <title>Lista choferes</title>
@@ -102,7 +103,9 @@
 ?>
 </table>         
         <form class="quit" action="administracion_choferes.php" method="POST">
-          <button type="submit" class="button button1">Volver</button>
+        <div class="buttonHolder">
+          <button type="submit" class="button button1 enter ">Volver</button>
+        </div>
         </form>
 </body>
 </html>

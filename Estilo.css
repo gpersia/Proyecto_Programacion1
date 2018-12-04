@@ -55,8 +55,8 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
 
 .left{ float:left; background:red;}
 
-.login-form .button {
-    background-color: #4CAF50; /* Green */
+/*.login-form .button {
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -65,7 +65,7 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
 }
@@ -77,4 +77,4 @@ body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-2
 .login-form .button1:hover {
     background-color: #4CAF50;
     color: white;
-}
+}*/

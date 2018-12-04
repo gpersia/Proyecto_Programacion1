@@ -13,7 +13,7 @@
       display: inline-block;
       font-size: 14px;
       margin: 4px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s; 
       transition-duration: 0.4s;
       cursor: pointer;
       width: 100%;
@@ -46,9 +46,7 @@
           <?php
             session_start();
           ?>
-        <div class="col-md-6">
-          <h2>Buscador vehiculo</h2>
-        </div>
+          <h2 align="center">Buscar vehiculo</h2>
           <form class="formulario" action="buscar_vehiculo.php" method="POST">
             <div class="form-group">
               <label for="nombre">Ingrese patente: </label>
@@ -64,8 +62,6 @@
           <br><br><br>
         </div>
         </div>
-      <div class="col-md-6">
-        <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
-      </div>
+        <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
   </body>
 </html>

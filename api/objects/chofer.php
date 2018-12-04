@@ -53,7 +53,7 @@
     $query="UPDATE " . $this->table_name . " SET apellido=:apellido, nombre=:nombre, dni=:dni, email=:email, FK_vehiculo=:FK_vehiculo, FK_transporte=:FK_transporte WHERE id=:id";
     $stmt=$this->conn->prepare($query);
 
-    $this->chofer_id=strip_tags($this->chofer_id);
+    $this->id=strip_tags($this->id);
     $this->apellido=strip_tags($this->apellido);
     $this->nombre=strip_tags($this->nombre);
     $this->dni=strip_tags($this->dni);

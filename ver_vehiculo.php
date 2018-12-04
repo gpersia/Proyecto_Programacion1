@@ -3,6 +3,37 @@
 ?>
 <html>
   <head>
+  <style>
+      .button{
+      background-color: #f0ad4e none repeat scroll 0 0;
+      border: 1px solid #d4d4d4d;
+      border-radius: 4px;
+      color: #ffffff;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 50%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+      }
+      .button1{
+        background-color: #f0ad4e; 
+        color: white; 
+        border: 2px solid #f0ad4e;
+      }
+      .button1:hover {
+        background-color: #ffffff;
+        color: #f0ad4e;
+      }
+      .buttonHolder{ text-align: center; }
+    </style>
     <meta charset="utf-8">
     <title>Lista vehiculos</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -64,6 +95,8 @@
               }
 ?>
 </table>         
-<a href="administracion_vehiculos.php"> <<--Volver al menu</a>
+<div class="buttonHolder">
+  <a href="administracion_vehiculos.php" align="center"><button class="button button1">Volver</button></a>
+</div>
 </body>
 </html>

@@ -43,11 +43,10 @@
   </body>
     <body id="LoginForm">
         <div class="container">
-            <div class="login-form">
                 <div class="main-div">
                     <div class="panel">
-                        <h2>Administracion</h2>
-                        <p>Seleccione una opcion:</p>
+                        <h2 align="center">Administracion</h2>
+                        <p align="center">Seleccione una opcion:</p>
                     </div>
                     <br>
                     <a href="administracion_choferes.php"><button class="button button1">Administracion de choferes</button></a>
@@ -57,9 +56,10 @@
                     <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button></a>
                     <br>
                     <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button></a>
+                    <br>
+                    <a href="index.html"><button class="button button1">Cerrar Sesion</button></a>
                 </div>
-                <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
-            </div>
+                <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
         </div>
     </body>
 </html>
