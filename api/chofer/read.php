@@ -10,12 +10,12 @@
     $db=$database->getConnection();
 
     $chofer = new chofer($db);
-    $stmt = $driver->read();        
+    $stmt = $chofer->read();        
     $numero = $stmt->rowCount();   
 
-    if($num>0){
-        $driver_arr=array();
-        $driver_arr["archivos"]=array();
+    if($numero>0){
+        $chofer_arr=array();
+        $chofer_arr["archivos"]=array();
 
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){ 
             extract($fila);

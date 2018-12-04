@@ -8,9 +8,9 @@ include_once '../config/database.php';
 include_once '../objects/chofer.php';
 $database = new Database();
 $db = $database->getConnection();
-$chofer = new chofer($db);
+$chofer = new Chofer($db);
 $data = json_decode(file_get_contents("php://input"));
-s
+
 if(isset($data->id)){
     $chofer->id = $data->id;
     $chofer->nombre = $data->nombre;
@@ -19,7 +19,7 @@ if(isset($data->id)){
     $chofer->dni = $data->dni;
     $chofer->FK_vehiculo = $data->FK_vehiculo;
     $chofer->FK_transporte = $data->FK_transporte;
-    if($driver->update()){
+    if($chofer->update()){
         echo json_encode(array("message" => "Se actualizaron los datos."));
     }else{
         echo json_encode(array("message" => "Error, intente nuevamente."));
