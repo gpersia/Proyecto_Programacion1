@@ -25,7 +25,7 @@
       $this->FK_vehiculo=strip_tags($this->FK_vehiculo);
       $this->FK_transporte=strip_tags($this->FK_transporte);
       $this->created=strip_tags($this->created);
-      
+      echo $this->nombre;
     $stmt->bindParam(":apellido", $this->apellido);
     $stmt->bindParam(":nombre", $this->nombre);
     $stmt->bindParam(":dni", $this->dni);
@@ -35,9 +35,10 @@
     $stmt->bindParam(":created", $this->created);
       
     if($stmt->execute()){
-      return true;
+      echo json_encode(array("message"=>"verdadero"));
+      //return true;
     }
-    return false;
+    //return false;
   }
 
   public function read(){
