@@ -4,45 +4,39 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Lista choferes</title>
+    <title>Lista vehiculos</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="Estilo.css" rel="stylesheet" type="text/css"/>
   </head>
 <body id="LoginForm">
-  <h2 align="center">Lista Choferes</h2>
+  <h2 align="center">Lista Vehiculos</h2>
 <?php
   $servername = "localhost";
   $database = "proyecto";
   $username = "root";
   $password = "root";
   $conn = mysqli_connect($servername, $username, $password, $database);
-  $buscar = mysqli_query($conn, "SELECT * FROM chofer"); 
+  $buscar = mysqli_query($conn, "SELECT * FROM vehiculo"); 
   if (mysqli_num_rows($buscar) > 0) {
 ?>  
     <table bgcolor="white" border = "2" width = "100%"> 
     <tr bgcolor="orange"> 
-      <th>ID</th> 
-      <th>Nombre</th> 
-      <th>Apellido</th>
-      <th>Email</th> 
-      <th>DNI</th>
-      <th>Vehiculo</th> 
-      <th>Transporte</th> 
+      <th>Marca</th> 
+      <th>Modelo</th> 
+      <th>Año fabricacion</th>
+      <th>Patente</th>  
       <th>Opciones</th>  
     </tr>
     <?php
       while ($datos = mysqli_fetch_array($buscar)){ 
     ?>
       <tr> 
-        <td> <?=$datos['id']?> </td> 
-        <td> <?=$datos['nombre']?> </td> 
-        <td> <?=$datos['apellido']?> </td>
-        <td> <?=$datos['email']?> </td> 
-        <td> <?=$datos['dni']?> </td>
-        <td> <?=$datos['FK_vehiculo']?> </td>
-        <td> <?=$datos['FK_transporte']?> </td>
-        <td> <form method='POST' action='eliminarchofer.php'>
-      <input type='hidden' name='dni' value='$datos["dni"]'>
+        <td> <?=$datos['marca']?> </td> 
+        <td> <?=$datos['modelo']?> </td> 
+        <td> <?=$datos['anho_fabricacion']?> </td>
+        <td> <?=$datos['patente']?> </td> 
+        <td> <form method='POST' action='eliminarvehiculo.php'>
+      <input type='hidden' name='patente' value='$datos["patente"]'>
       <input type='submit' value='Eliminar'>
       </form></td>
       </tr> 
@@ -52,6 +46,6 @@
   }
     ?>
 </table>         
-<a href="administracion_choferes.php"> <<--Volver al menu</a>
+<a href="administracion_vehiculos.php"> <<--Volver al menu</a>
 </body>
 </html>

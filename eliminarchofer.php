@@ -1,13 +1,17 @@
 <?php
   session_start();
-  $servername = "localhost";
-  $database = "proyecto";
-  $username = "root";
-  $password = "root";
-  $conn = mysqli_connect($servername, $username, $password, $database);
+  $servidor = 'localhost';
+  $usuario = 'root';
+  $clave = 'root';
+  $base = 'proyecto';
+  $conn = mysqli_connect($servidor, $usuario, $clave, $base);
 
-  $id = $_GET['id'];
-  $borrar = "DELETE FROM chofer WHERE id=:id";
-  $ejec_borrar = $conn -> prepare($borrar);
-  $ejec_borrar -> execute();
-?>
+  $dni = $_POST['dni'];
+
+  $registro = array('dni' => $dni);
+  $sql = "DELETE FROM chofer WHERE dni = :dni";
+  $ejec_sql = $conn -> prepare($sql);
+  $ejec_sql -> execute($registro);
+
+  header('location: ver_chofer.php');
+ ?>

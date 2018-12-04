@@ -9,16 +9,14 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
       die("Fallo la conexión: " . mysqli_connect_error());
 }
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$email = $_POST['email'];
-$dni = $_POST['dni'];
-$vehiculo = $_POST['FK_vehiculo'];
-$transporte = $_POST['FK_transporte'];
+$marca = $_POST['marca'];
+$modelo = $_POST['modelo'];
+$anho_fabricacion = $_POST['anho_fabricacion'];
+$patente = $_POST['patente'];
  
-$sql = "INSERT INTO chofer (nombre, apellido, email, dni, FK_vehiculo, FK_transporte) VALUES ('$nombre', '$apellido', '$email', '$dni', $vehiculo, '$transporte')";
+$sql = "INSERT INTO vehiculo (marca, modelo, anho_fabricacion, patente) VALUES ('$marca', '$modelo', '$anho_fabricacion', '$patente')";
 if (mysqli_query($conn, $sql)) {
-      echo "Se agrego el chofer a la base de datos \n \n";
+      echo "Se agrego el vehiculo a la base de datos \n \n";
       echo "<a href=welcome.php>Volver al panel de administracion</a>";
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);

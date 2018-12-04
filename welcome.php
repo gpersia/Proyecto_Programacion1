@@ -50,11 +50,13 @@
                         <p>Seleccione una opcion:</p>
                     </div>
                     <br>
-                    <a href="administracion_choferes.php"><button class="button button1">Administracion de choferes</button>
+                    <a href="administracion_choferes.php"><button class="button button1">Administracion de choferes</button></a>
                     <br>
-                    <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button>
+                    <a href="administracion_vehiculos.php"><button class="button button1">Administracion de vehiculos</button></a>
                     <br>
-                    <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button>
+                    <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button></a>
+                    <br>
+                    <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button></a>
                 </div>
                 <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
             </div>
