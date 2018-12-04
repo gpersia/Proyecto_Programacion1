@@ -24,16 +24,19 @@ class Vehiculo{
     {
         $query="INSERT INTO " . $this->table_name . " SET marca=:marca, modelo=:modelo, anho_fabricacion=:anho_fabricacion, patente=:patente, created=:created";
         $stmt=$this->conn->prepare($query);
+
         $this->marca=strip_tags($this->marca);
         $this->modelo=strip_tags($this->modelo);
         $this->anho_fabricacion=strip_tags($this->anho_fabricacion);
         $this->patente=strip_tags($this->patente);
         $this->created=strip_tags($this->created);
+
         $stmt->bindParam(":marca",$this->marca);
         $stmt->bindParam(":modelo",$this->modelo);
         $stmt->bindParam(":anho_fabricacion",$this->anho_fabricacion);
         $stmt->bindParam(":patente",$this->patente);
         $stmt->bindParam(":created",$this->created);
+
         if($stmt->execute())
         {
             return true;
@@ -42,25 +45,23 @@ class Vehiculo{
     }
     public function update()
     {
-        $query="UPDATE " . $this->table_name . " SET marca=:marca, modelo=:modelo, anho_fabricacion=:anho_fabricacion, patente=:patente, created=:created WHERE id=:id";
-         
+        $query = "UPDATE vehiculo SET marca = :marca, modelo = :modelo, anho_fabricacion = :anho_fabricacion, patente = :patente WHERE id = :id";
         $stmt=$this->conn->prepare($query);
+
+        $this->id=strip_tags($this->id);
         $this->marca=strip_tags($this->marca);
         $this->modelo=strip_tags($this->modelo);
         $this->anho_fabricacion=strip_tags($this->anho_fabricacion);
         $this->patente=strip_tags($this->patente);
-        $this->created=strip_tags($this->created);
-        $this->id=strip_tags($this->id);
+
+        $stmt->bindParam(":id",$this->id);
         $stmt->bindParam(":marca",$this->marca);
         $stmt->bindParam(":modelo",$this->modelo);
         $stmt->bindParam(":anho_fabricacion",$this->anho_fabricacion);
         $stmt->bindParam(":patente",$this->patente);
-        $stmt->bindParam(":created",$this->created);
-        $stmt->bindParam(":id",$this->id);
          if($stmt->execute()){
             return true;
         }
-        
         return false;
         
     }
@@ -73,10 +74,11 @@ public function delete()
     $stmt_chofer=$this->conn->prepare($query_chofer);
     
     $this->id=strip_tags($this->id);
+
     $stmt->bindParam(":id",$this->id);
     $stmt_chofer->bindParam(":id",$this->id);
     
-    if(($stmt_sistema->execute()) && ($stmt_chofer->execute()) && ($stmt->execute())){
+    if($stmt_chofer->execute() && $stmt->execute()){
         return true;
     }else{
         return false;

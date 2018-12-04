@@ -15,9 +15,10 @@
     $vehiculo = new Vehiculo($db);
     $data = json_decode(file_get_contents("php://input"));
 
-    if(!empty($data->patente)){
-        $vehiculo->patente = $data->patente;
-        if($vehicle->delete()){
+    $vehiculo->id = $data->id;
+
+    if($data->id != null){
+        if($vehiculo->delete()){
             echo json_encode(Array("message"=>"Se eliminó el vehículo correctamente"));
         }else{
             echo json_encode(Array("message"=>"No se eliminó el vehículo"));

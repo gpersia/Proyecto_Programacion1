@@ -15,20 +15,17 @@
     $vehiculo = new Vehiculo($db);
     $data = json_decode(file_get_contents("php://input"));
 
-    print_r($data);
-    $vehiculo->id = $data->id;
-    $vehiculo->marca = $data->marca;
-    $vehiculo->modelo = $data->modelo;
-    $vehiculo->anho_fabricacion = $data->anho_fabricacion;
-    $vehiculo->patente = $data->patente;
+    if(isset($data->id)){
+        $vehiculo->id = $data->id;
+        $vehiculo->marca = $data->marca;
+        $vehiculo->modelo = $data->modelo;
+        $vehiculo->anho_fabricacion = $data->anho_fabricacion;
+        $vehiculo->patente = $data->patente;
 
-    if($vehiculo->id!=null){
-        if($vehiculo->update()){
-            echo json_encode(Array("Message"=>"Se actualizo correctamente"));
-        }else{
-            echo json_encode(Array("Message"=>"No se pudo actualizar"));
-        }
+    if($vehiculo->update()){
+        echo json_encode(array("message" => "Se actualizaron los datos."));
     }else{
-        echo json_encode(Array("Message"=>"Datos faltantes"));
+        echo json_encode(array("message" => "Error, intente nuevamente."));
+    }
 }
 ?>
