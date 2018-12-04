@@ -3,8 +3,38 @@
 ?>
 <html>
   <head>
+      <style>
+      .button{
+      background-color: #f0ad4e none repeat scroll 0 0;
+      border: 1px solid #d4d4d4d;
+      border-radius: 4px;
+      color: #ffffff;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+      }
+      .button1{
+        background-color: #f0ad4e; 
+        color: white; 
+        border: 2px solid #f0ad4e;
+      }
+      .button1:hover {
+        background-color: #ffffff;
+        color: #f0ad4e;
+      }
+      </style>
     <meta charset="utf-8">
-    <title>Lista vehiculos</title>
+    <title>Lista choferes</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="Estilo.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -18,10 +48,11 @@
   $clave = 'root';
   $base = 'proyecto';
   $conn = new PDO("mysql: host=$servidor; dbname=$base", $usuario, $clave);
-
-  $sql = 'select * from vehiculo';
+  $patente = $_POST['patente'];
+  $registro = array('patente' => $patente);
+  $sql = "SELECT * FROM  vehiculo WHERE patente =:patente";
                $ejec_sql = $conn -> prepare($sql);
-               $ejec_sql -> execute();
+               $ejec_sql -> execute($registro);
               echo "<tr bgcolor='orange'>";
                 echo "<td>";
                 echo "ID";
@@ -33,13 +64,13 @@
                 echo "Modelo";
                 echo "</td>";
                 echo "<td>";
-                echo "Año Fabricacion";
+                echo "Año fabricacion";
                 echo "</td>";
                 echo "<td>";
                 echo "Patente";
                 echo "</td>";
                 echo "<td>";
-                echo "Añadido";
+                echo "Creado";
                 echo "</td>";
                 echo "<td>";
                 echo "Modificado";
@@ -63,7 +94,11 @@
                  echo "</tr>";
               }
 ?>
-</table>         
-<a href="administracion_vehiculos.php"> <<--Volver al menu</a>
+</table> 
+        <div class="container-fluid">    
+        <form class="quit" action="administracion_vehiculos.php" method="POST">
+          <button type="submit" class="button button1">Volver</button>
+        </form>
+      </div>
 </body>
 </html>

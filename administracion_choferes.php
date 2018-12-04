@@ -54,7 +54,7 @@
                     <br>
                     <a href="ver_chofer.php"><button class="button button1">Ver lista / Modificar</button></a>
                     <br>
-                    <a href="buscar_chofer.php"><button class="button button1">Buscar</button></a>
+                    <a href="buscarchofer.php"><button class="button button1">Buscar</button></a>
                 </div>
                 <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
             </div>

@@ -32,7 +32,7 @@
       }
       </style>
     <meta charset="utf-8">
-    <title>Lista choferes</title>
+    <title>Lista vehiculos</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="Estilo.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -46,7 +46,7 @@
           <h2>Edición de Chofer</h2>
           <h5>Rellene los datos: </h5>
           <br><br>
-          <form class="formulario" action="editarchofer.php" method="POST">
+          <form class="formulario" action="editarvehiculo.php" method="POST">
 
           <?php
             $id = $_GET['id'];
@@ -56,7 +56,7 @@
             $base = 'proyecto';
             $conn = new PDO("mysql: host=$servidor; dbname=$base", $usuario, $clave);
 
-            $sql = "select * from chofer";
+            $sql = "select * from vehiculo";
             $ejec_sql = $conn -> prepare($sql);
             $ejec_sql -> execute();
             while($fila = $ejec_sql -> fetch(PDO::FETCH_ASSOC)){
@@ -67,28 +67,20 @@
                     echo "<input type=\"text\" class=\"form-control\" name=\"id\" id=\"id\"value=\"$fila[id]\" readonly=\"readonly\">";
                   echo "</div>";
                   echo "<div class=\"form-group\">";
-                    echo "<label for=\"nombre\">Nombre: </label>";
-                    echo "<input type=\"text\" class=\"form-control\" name=\"nombre\" id=\"nombre\"value=\"$fila[nombre]\">";
+                    echo "<label for=\"marca\">Marca: </label>";
+                    echo "<input type=\"text\" class=\"form-control\" name=\"marca\" id=\"marca\"value=\"$fila[marca]\">";
                   echo "</div>";
                   echo "<div class=\"form-group\">";
-                    echo "<label for=\"apellido\">Apellido: </label>";
-                    echo "<input type=\"text\" class=\"form-control\" name=\"apellido\" id=\"apellido\" value=\"$fila[apellido]\">";
+                    echo "<label for=\"modelo\">Modelo: </label>";
+                    echo "<input type=\"text\" class=\"form-control\" name=\"modelo\" id=\"modelo\" value=\"$fila[modelo]\">";
                   echo "</div>";
                   echo "<div class=\"form-group\">";
-                    echo "<label for=\"email\">Email: </label>";
-                    echo "<input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\"value=\"$fila[email]\">";
+                    echo "<label for=\"anho_fabricacion\">Año fabricacion: </label>";
+                    echo "<input type=\"text\" class=\"form-control\" name=\"anho_fabricacion\" id=\"anho_fabricacion\"value=\"$fila[anho_fabricacion]\">";
                   echo "</div>";
                   echo "<div class=\"form-group\">";
-                    echo "<label for=\"dni\">Documento: </label>";
-                    echo "<input type=\"text\" class=\"form-control\" name=\"dni\" id=\"dni\"value=\"$fila[dni]\">";
-                  echo "</div>";
-                  echo "<div class=\"form-group\">";
-                    echo "<label for=\"FK_vehiculo\">Vehiculo: </label>";
-                    echo "<input type=\"text\" class=\"form-control\" name=\"FK_vehiculo\" id=\"FK_vehiculo\"value=\"$fila[FK_vehiculo]\">";
-                  echo "</div>";
-                  echo "<div class=\"form-group\">";
-                    echo "<label for=\"FK_transporte\">Tipo transporte: </label>";
-                    echo "<input type=\"text\" class=\"form-control\" name=\"FK_transporte\" id=\"FK_transporte\"value=\"$fila[FK_transporte]\">";
+                    echo "<label for=\"patente\">Patente: </label>";
+                    echo "<input type=\"text\" class=\"form-control\" name=\"patente\" id=\"patente\"value=\"$fila[patente]\">";
                   echo "</div>";
                   break;
                 }
