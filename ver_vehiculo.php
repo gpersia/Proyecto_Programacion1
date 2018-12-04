@@ -4,48 +4,66 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Lista vehiculos</title>
+    <title>Lista choferes</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="Estilo.css" rel="stylesheet" type="text/css"/>
   </head>
 <body id="LoginForm">
-  <h2 align="center">Lista Vehiculos</h2>
+<h2 align="center">Lista Choferes</h2>
+<table border="2" bgcolor="white" align="center">
+
 <?php
-  $servername = "localhost";
-  $database = "proyecto";
-  $username = "root";
-  $password = "root";
-  $conn = mysqli_connect($servername, $username, $password, $database);
-  $buscar = mysqli_query($conn, "SELECT * FROM vehiculo"); 
-  if (mysqli_num_rows($buscar) > 0) {
-?>  
-    <table bgcolor="white" border = "2" width = "100%"> 
-    <tr bgcolor="orange"> 
-      <th>Marca</th> 
-      <th>Modelo</th> 
-      <th>Año fabricacion</th>
-      <th>Patente</th>  
-      <th>Opciones</th>  
-    </tr>
-    <?php
-      while ($datos = mysqli_fetch_array($buscar)){ 
-    ?>
-      <tr> 
-        <td> <?=$datos['marca']?> </td> 
-        <td> <?=$datos['modelo']?> </td> 
-        <td> <?=$datos['anho_fabricacion']?> </td>
-        <td> <?=$datos['patente']?> </td> 
-        <td> <form method='POST' action='eliminarvehiculo.php'>
-      <input type='hidden' name='patente' value='$datos["patente"]'>
-      <input type='submit' value='Eliminar'>
-      </form></td>
-      </tr> 
-    <?php
-  }
-    mysqli_free_result($buscar); 
-  }
-    ?>
+  $servidor = 'localhost';
+  $usuario = 'root';
+  $clave = 'root';
+  $base = 'proyecto';
+  $conn = new PDO("mysql: host=$servidor; dbname=$base", $usuario, $clave);
+
+  $sql = 'select * from vehiculo';
+               $ejec_sql = $conn -> prepare($sql);
+               $ejec_sql -> execute();
+              echo "<tr bgcolor='orange'>";
+                echo "<td>";
+                echo "ID";
+                echo "</td>";
+                echo "<td>";
+                echo "Marca";
+                echo "</td>";
+                echo "<td>";
+                echo "Modelo";
+                echo "</td>";
+                echo "<td>";
+                echo "Año Fabricacion";
+                echo "</td>";
+                echo "<td>";
+                echo "Patente";
+                echo "</td>";
+                echo "<td>";
+                echo "Añadido";
+                echo "</td>";
+                echo "<td>";
+                echo "Modificado";
+                echo "</td>";
+                echo "<td>";
+                echo "Opciones";
+                echo "</td>";
+                echo "</tr>";
+              while($fila = $ejec_sql -> fetch(PDO::FETCH_ASSOC)){
+                 echo "<tr>";
+                foreach($fila as $campo){
+                  echo "<td>";
+                  echo "$campo";
+                  echo "</td>";
+                }
+                 echo "<td>";
+                 echo "<a href='eliminarvehiculo.php?id=".$fila['id']."'>Eliminar</a>";
+                 echo "&nbsp;&nbsp;&nbsp;";
+                 echo "<a href='editar_vehiculo.php?id=".$fila['id']."'>Editar</a>";
+                 echo "</td>";
+                 echo "</tr>";
+              }
+?>
 </table>         
-<a href="administracion_vehiculos.php"> <<--Volver al menu</a>
+<a href="administracion_choferes.php"> <<--Volver al menu</a>
 </body>
 </html>
