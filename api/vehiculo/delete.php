@@ -24,7 +24,7 @@
             echo json_encode(Array("message"=>"No se eliminó el vehículo"));
         }
     }else{
-        echo json_encode(Array("message"=>"No se cumple que !empty(data->patente)"));
+        echo json_encode(Array("message"=>"No se cumple que !empty(data->id)"));
     }
 ?>
 

@@ -37,9 +37,13 @@
     <link href="Estilo.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <?php
-      session_start();
-    ?>
+    <?php session_start(); ?>
+
+<?php 
+if($_SESSION['id'] = null){
+  header('Location: index.html');
+}
+?>
   </body>
     <body id="LoginForm">
         <div class="container">

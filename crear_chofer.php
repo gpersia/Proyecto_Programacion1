@@ -43,9 +43,13 @@
         </div>
         <div class="col-md-6">
           <br>
-          <?php
-            session_start();
-          ?>
+<?php session_start(); ?>
+
+<?php 
+if($_SESSION['id'] = null){
+  header('Location: index.html');
+}
+?>
           <h2 align="center">Registrar Chofer</h2>
           <h5 align="center">Completar los datos</h5>
           <form class="formulario" action="crearchofer.php" method="POST">

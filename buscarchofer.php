@@ -43,8 +43,12 @@
         </div>
         <div class="col-md-6">
           <br>
-          <?php
-            session_start();
+          <?php session_start(); ?>
+
+          <?php 
+            if($_SESSION['id'] = null){
+              header('Location: index.html');
+            }
           ?>
           <h2 align="center">Buscar chofer</h2>
           <form class="formulario" action="buscar_chofer.php" method="POST">

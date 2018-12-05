@@ -15,7 +15,7 @@
 
     if($numero>0){
         $chofer_arr=array();
-        $chofer_arr["archivos"]=array();
+        $chofer_arr["choferes"]=array();
 
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){ 
             extract($fila);
@@ -30,7 +30,7 @@
                 "created" => $created,
                 "updated" => $updated,
             );
-            array_push($chofer_arr["archivos"], $chofer_item);
+            array_push($chofer_arr["choferes"], $chofer_item);
         }
         echo json_encode($chofer_arr);
     }

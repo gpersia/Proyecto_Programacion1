@@ -1,5 +1,9 @@
+<?php session_start(); ?>
+
 <?php 
-  session_start(); 
+if($_SESSION['id'] = null){
+  header('Location: index.html');
+}
 ?>
 <html>
   <head>

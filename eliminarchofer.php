@@ -1,5 +1,8 @@
-<?php
-  session_start();
+<?php session_start(); ?>
+<?php 
+  if($_SESSION['id'] = null){
+    header('Location: index.html');
+  }
   $servidor = 'localhost';
   $usuario = 'root';
   $clave = 'root';

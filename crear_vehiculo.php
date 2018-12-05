@@ -43,8 +43,11 @@
         </div>
         <div class="col-md-6">
           <br>
-          <?php
-            session_start();
+          <?php session_start(); ?>
+          <?php 
+            if($_SESSION['id'] = null){
+              header('Location: index.html');
+            }
           ?>
           <h2 align="center">Registrar Vehiculo</h2>
           <h5 align="center">Completar los datos</h5>
@@ -67,9 +70,9 @@
             </div>
               <br>
             <button type="submit" class="button button1">Enviar</button>
-            <a href="administracion_vehiculos.php"><button class="button button1">Volver</button></a>
               <br><br>
           </form>
+          <a href="administracion_vehiculos.php"><button class="button button1">Volver</button></a>
           <br><br>
         </div>
         </div>

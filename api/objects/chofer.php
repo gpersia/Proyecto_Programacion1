@@ -80,7 +80,7 @@
 
     $this->dni=strip_tags($this->dni);
 
-    $stmt->bindParam(":id",$this->dni);
+    $stmt->bindParam(":dni",$this->dni);
 
     if($stmt->execute()){
       return true;

@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+
+<?php 
+if($_SESSION['id'] = null){
+  header('Location: index.html');
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
