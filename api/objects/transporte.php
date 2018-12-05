@@ -43,6 +43,7 @@ function update(){
         $this->id=strip_tags($this->id);
         $this->nombre=strip_tags($this->nombre);
         $this->pais_procedencia=strip_tags($this->pais_procedencia);
+  $stmt->bindParam(":id",$this->id);
   $stmt->bindParam(":nombre",$this->nombre);
   $stmt->bindParam(":pais_procedencia",$this->pais_procedencia);
   if($stmt->execute()){
@@ -52,18 +53,12 @@ function update(){
   }
     
 function delete(){
-  $query_chofer="DELETE FROM " . $this->table_chofer . " WHERE id=:id";
-  $query_vehiculo="DELETE FROM " . $this->table_vehiculo . " WHERE id=:id";
-  $query_transporte= "DELETE FROM " . $this->table_transporte . " WHERE id=:id";
-  $stmt_chofer=$this->conn->prepare($query_chofer);
-  $stmt_vehiculo=$this->conn->prepare($query_svehiculo);
-  $stmt_transporte=$this->conn->prepare($query_transporte);
+  $query= "DELETE FROM " . $this->table_transporte . " WHERE id=:id";
+  $stmt=$this->conn->prepare($query);
   $this->id=strip_tags($this->id);
-  $stmt_chofer->bindParam(":id",$this->id);
-  $stmt_vehiculo->bindParam(":id",$this->id);
-  $stmt_transporte->bindParam(":id",$this->id);
+  $stmt->bindParam(":id",$this->id);
   
-  if(($stmt_chofer->execute()) && ($stmt_vehiculo->execute()) && ($stmt_transporte->execute())){
+  if($stmt->execute() ){
     return true;
     }
     else{
