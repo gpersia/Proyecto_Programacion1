@@ -1,36 +1,54 @@
 <?php
-// include database and object files
+header("Access-Control-Allow-Origin: http://localhost/rest-api-authentication-example/");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 include_once '../config/database.php';
 include_once '../objects/user.php';
- 
-// get database connection
+
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare user object
 $user = new User($db);
-// set ID property of user to be edited
-$user->username = isset($_GET['username']) ? $_GET['username'] : die();
-$user->password = isset($_GET['password']) ? $_GET['password'] : die();
-// read the details of user to be edited
-$stmt = $user->login();
-if($stmt->rowCount() > 0){
-    // get retrieved row
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // create array
-    $user_arr=array(
-        "status" => true,
-        "message" => "Successfully Login!",
-        "id" => $row['id'],
-        "username" => $row['username']
+
+$data = json_decode(file_get_contents("php://input"));
+
+$user->username = $data->username;
+$username_exists = $user->usernameExiste();
+ 
+include_once '../config/core.php';
+include_once '../libs/php-jwt-master/src/BeforeValidException.php';
+include_once '../libs/php-jwt-master/src/ExpiredException.php';
+include_once '../libs/php-jwt-master/src/SignatureInvalidException.php';
+include_once '../libs/php-jwt-master/src/JWT.php';
+use \Firebase\JWT\JWT;
+
+if($username_exists && password_verify($data->password, $user->password)){
+ 
+    $token = array(
+       "iss" => $iss,
+       "aud" => $aud,
+       "iat" => $iat,
+       "nbf" => $nbf,
+       "data" => array(
+           "id" => $user->id,
+           "username" => $user->username,
+           "password" => $user->password
+       )
     );
+    http_response_code(200);
+    $jwt = JWT::encode($token, $key);
+    echo json_encode(
+            array(
+                "message" => "Sesion iniciada.",
+                "jwt" => $jwt
+            )
+        );
+ 
+}else{
+    http_response_code(401);
+    echo json_encode(array("message" => "Fallo inicio de sesion."));
 }
-else{
-    $user_arr=array(
-        "status" => false,
-        "message" => "Invalid Username or Password!",
-    );
-}
-// make it json format
-print_r(json_encode($user_arr));
 ?>

@@ -1,54 +1,44 @@
 <?php
 class User{
- 
-    // database connection and table name
+
     private $conn;
     private $table_name = "users";
- 
-    // object properties
+
     public $id;
     public $username;
     public $password;
-    public $created;
- 
-    // constructor with $db as database connection
+
     public function __construct($db){
         $this->conn = $db;
     }
-    // signup user
-    function signup(){
+
+    function create(){
     
-        if($this->isAlreadyExist()){
+        if($this->Existe()){
             return false;
         }
-        // query to insert record
-        $query = "INSERT INTO
-                    " . $this->table_name . "
-                SET
-                    username=:username, password=:password, created=:created";
+        $query = "INSERT INTO " . $this->table_name . " SET
+                    username=:username,
+                    password=:password";
     
-        // prepare query
         $stmt = $this->conn->prepare($query);
-    
-        // sanitize
+
         $this->username=htmlspecialchars(strip_tags($this->username));
-        $this->password=htmlspecialchars(strip_tags($this->password));
-        $this->created=htmlspecialchars(strip_tags($this->created));
-    
-        // bind values
+        $this->password=htmlspecialchars(strip_tags($this->password));    
         $stmt->bindParam(":username", $this->username);
-        $stmt->bindParam(":password", $this->password);
-        $stmt->bindParam(":created", $this->created);
+
+        $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+        $stmt->bindParam(":password", $password_hash);
     
-        // execute query
+
         if($stmt->execute()){
             $this->id = $this->conn->lastInsertId();
             return true;
         }
     
         return false;
-        
-    }
+
+}
     // login user
     function login(){
         // select all query
@@ -64,15 +54,15 @@ class User{
         $stmt->execute();
         return $stmt;
     }
-    function isAlreadyExist(){
+    function Existe(){
         $query = "SELECT *
             FROM
                 " . $this->table_name . " 
             WHERE
                 username='".$this->username."'";
-        // prepare query statement
+
         $stmt = $this->conn->prepare($query);
-        // execute query
+
         $stmt->execute();
         if($stmt->rowCount() > 0){
             return true;
@@ -81,4 +71,29 @@ class User{
             return false;
         }
     }
+
+function usernameExiste(){
+ 
+    $query = "SELECT id, username, password
+            FROM " . $this->table_name . " WHERE username ='".$this->username."'";
+
+    $stmt = $this->conn->prepare( $query );
+
+    $this->username=htmlspecialchars(strip_tags($this->username));
+
+    $stmt->bindParam(":username",$this->username);
+    $stmt->execute();
+
+    $num = $stmt->rowCount();
+    if($num>0){
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->id = $row['id'];
+        $this->username = $row['username'];
+        $this->password = $row['password'];
+        return true;
+    }
+    return false;
+}
 }
