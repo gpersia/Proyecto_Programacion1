@@ -37,31 +37,32 @@
     <link href="Estilo.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <?php
-      session_start();
-    ?>
+    <?php session_start(); ?>
+
+<?php 
+if($_SESSION['id'] = null){
+  header('Location: index.html');
+}
+?>
   </body>
     <body id="LoginForm">
         <div class="container">
                 <div class="main-div">
-                    <div class="panel">
-                        <h2 align="center">Administracion</h2>
-                        <p align="center">Seleccione una opcion:</p>
-                    </div>
+                  <div class="panel">
+                    <h2 align="center">Administración-Transportes</h2>
+                    <p align="center">Seleccione una opción: </p>
+                  </div>
                     <br>
-                    <a href="administracion_choferes.php"><button class="button button1">Administracion de choferes</button></a>
+                    <a href="crear_transporte.php"><button class="button button1">Crear</button></a>
                     <br>
-                    <a href="administracion_vehiculos.php"><button class="button button1">Administracion de vehiculos</button></a>
+                    <a href="ver_transporte.php"><button class="button button1">Ver lista / Modificar</button></a>
                     <br>
-                    <a href="administracion_transporte.php"><button class="button button1">Administracion de transportes</button></a>
+                    <a href="buscartransporte.php"><button class="button button1">Buscar</button></a>
                     <br>
-                    <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button></a>
-                    <br>
-                    <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button></a>
-                    <br>
-                    <a href="index.html"><button class="button button1">Cerrar Sesion</button></a>
+                    <a href="welcome.php" align="center"><button class="button button1">Volver</button></a>
                 </div>
                 <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
-        </div>
+          </div>
+
     </body>
 </html>

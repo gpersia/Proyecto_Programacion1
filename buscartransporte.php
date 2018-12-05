@@ -13,7 +13,7 @@
       display: inline-block;
       font-size: 14px;
       margin: 4px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s; 
       transition-duration: 0.4s;
       cursor: pointer;
       width: 100%;
@@ -32,7 +32,7 @@
       }
     </style>
     <meta charset="utf-8">
-    <title>Registro Choferes</title>
+    <title>Registro Transporte</title>
     <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="Estilo.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -43,39 +43,29 @@
         </div>
         <div class="col-md-6">
           <br>
-          <?php
-            session_start();
+          <?php session_start(); ?>
+
+          <?php 
+            if($_SESSION['id'] = null){
+              header('Location: index.html');
+            }
           ?>
-        <div class="col-md-6">
-          <h2>Registrar Chofer</h2>
-          <h5>Completar los datos</h5>
-        </div>
-          <form class="formulario" action="crearchofer.php" method="POST">
+          <h2 align="center">Buscar transporte</h2>
+          <form class="formulario" action="buscar_transporte.php" method="POST">
             <div class="form-group">
-              <label for="nombre">Nombre: </label>
+              <label for="nombre">Ingrese nombre: </label>
               <input type="text" class="form-control" name="nombre" id="nombre">
             </div>
-            <div class="form-group">
-              <label for="apellido">Apellido: </label>
-              <input type="text" class="form-control" name="apellido" id="apellido">
-            </div>
-            <div class="form-group">
-              <label for="email">Email: </label>
-              <input type="text" class="form-control" name="email" id="email">
-            </div>
-            <div class="form-group">
-              <label for="dni">Documento: </label>
-              <input type="text" class="form-control" name="dni" id="dni">
-            </div>
-              <br>
+            <br>
             <button type="submit" class="button button1">Enviar</button>
               <br><br>
+          </form>
+          <form class="quit" action="administracion_transporte.php" method="POST">
+            <button type="submit" class="button button1">Volver</button>
           </form>
           <br><br><br>
         </div>
         </div>
-      <div class="col-md-6">
-        <p class="botto-text"> Dise&ntilde;ado por Tempra-Persia</p>
-      </div>
+        <p class="botto-text" align="center"> Dise&ntilde;ado por Tempra-Persia</p>
   </body>
 </html>
