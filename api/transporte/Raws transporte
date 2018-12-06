@@ -1,0 +1,24 @@
+TRANSPORTES
+
+POST
+{
+	"nombre": "",
+	"pais_procedencia": ""
+}
+
+PUT
+{
+	"id": "",
+	"nombre": "",
+	"pais_procedencia": ""
+}
+
+GET
+
+Lee todo
+
+DELETE
+{
+	"id": ""
+
+}

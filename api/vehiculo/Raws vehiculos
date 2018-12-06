@@ -1,0 +1,31 @@
+VEHICULO
+
+POST
+
+{
+	"marca": "",
+	"modelo": "",
+	"anho_fabricacion": "",
+	"patente": ""
+}
+
+
+PUT
+
+{
+	"id": "",
+	"marca": "",
+	"modelo": "",
+	"anho_fabricacion": "",
+	"patente": ""
+}
+
+GET
+
+LEE TODO
+
+DELETE
+
+{
+	"id": ""
+}

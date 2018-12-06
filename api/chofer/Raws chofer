@@ -1,0 +1,35 @@
+CHOFER
+
+POST
+
+{
+	"nombre": "",
+	"apellido": "",
+	"email": "",
+	"dni": "",
+	"FK_vehiculo": "",
+	"FK_transporte": ""
+}
+
+
+PUT
+
+{
+	"id": "",
+	"nombre": "",
+	"apellido": "",
+	"email": "",
+	"dni": "",
+	"FK_vehiculo": "",
+	"FK_transporte": ""
+}
+
+GET
+
+LEE TODO
+
+DELETE
+
+{
+	"dni": "",
+}

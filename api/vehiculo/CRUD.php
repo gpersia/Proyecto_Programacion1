@@ -13,7 +13,6 @@
         $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $nuevo=parse_url($url);
         $endpoint=$nuevo["host"].$nuevo["path"].'/'.$_SERVER['REQUEST_METHOD'];
-    //    exit;
     }
 
     if(($_SERVER['REQUEST_METHOD']==='GET') && (isset($_GET['jwt']))){
@@ -22,21 +21,18 @@
         $nuevo=parse_url($url);
         $endpoint=$nuevo["host"].$nuevo["path"].'/'.$_SERVER['REQUEST_METHOD'];
         echo json_encode(array("message"=>"esto es read"));
-    //    exit;
     }
     if($_SERVER["REQUEST_METHOD"]=='PUT'){
         include 'update.php';
         $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $nuevo=parse_url($url);
         $endpoint=$nuevo["host"].$nuevo["path"].'/'.$_SERVER['REQUEST_METHOD'];
-    //    exit;
 }
     if($_SERVER["REQUEST_METHOD"]=='DELETE'){
         include 'delete.php';
             $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $nuevo=parse_url($url);
             $endpoint=$nuevo["host"].$nuevo["path"].'/'.$_SERVER['REQUEST_METHOD'];
-//        exit;
     }
 
     $time = microtime();

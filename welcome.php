@@ -57,7 +57,7 @@
                     <br>
                     <a href="ver_auditoria.php"><button class="button button1">Ver auditoría</button></a>
                     <br>
-                    <a href="exportar_auditoria"><button class="button button1">Exportar auditoría</button></a>
+                    <a href="exportar_auditoria.php"><button class="button button1">Exportar auditoría</button></a>
                     <br>
                     <a href="index.html"><button class="button button1">Cerrar Sesion</button></a>
                 </div>
