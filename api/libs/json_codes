@@ -1,0 +1,15 @@
+vehiculos
+  create
+    {
+    "patente": "SSS465",
+    "anho_patente": "1934",
+    "anho_fabricacion": "2443",
+    "marca": "sad",
+    "modelo": "et",
+    "sistema_id": ["9","14"]
+    }
+
+  delete
+    {
+    "sistema_id": ""
+    }

@@ -9,5 +9,5 @@ $aud = "";//para quien se creo
 $iat = 1356999524;//hora en que el token se creo
 $nbf = 1357000000;//no se acepta el token antes de esta hora
 $time=time();//toma la hora
-$exp=$time+100;//tiempo en que expira
+$exp=$time+300;//tiempo en que expira
 ?>
