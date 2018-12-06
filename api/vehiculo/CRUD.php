@@ -46,7 +46,7 @@
 
 echo json_encode(array("message"=>"no incluye auditoria"));
 
-echo json_encode($nombre);
+echo json_encode($name);
 echo json_encode($total_time);
 echo json_encode($endpoint);
 
@@ -54,7 +54,7 @@ echo json_encode($endpoint);
     echo json_encode(array("message"=>"si incluye auditoria"));
 
 
-    crearauditoria($nombre,$total_time,$endpoint);
+    crearauditoria($name,$total_time,$endpoint);
 
 
 

@@ -1,10 +1,10 @@
 <?php
 
 
-    function crearauditoria($nombre,$total_time,$endpoint){
+    function crearauditoria($name,$total_time,$endpoint){
 
 		echo json_encode(array("message"=>"esto es funcion"));
-		echo json_encode($nombre);
+		echo json_encode($name);
 		echo json_encode($total_time);
 		echo json_encode($endpoint);
         
@@ -24,7 +24,7 @@
 
 		$data = json_decode(file_get_contents("php://input"));
 
-		$auditoria->username=$nombre;
+		$auditoria->username=$name;
 		$auditoria->response_time=$total_time;
 		$auditoria->endpoint=$endpoint;
 

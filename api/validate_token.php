@@ -23,8 +23,8 @@
 		try {
 			$decoded = JWT::decode($jwt, $key, array('HS256'));
 				http_response_code(200);
-				$nombre=$decoded->data->username;
-				return $nombre;
+				$name=$decoded->data->username;
+				return $name;
 		}
 		catch (Exception $e){
 			http_response_code(401);
